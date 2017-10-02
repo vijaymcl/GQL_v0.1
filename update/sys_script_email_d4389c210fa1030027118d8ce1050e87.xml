@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>CountoverdueNeeditTaslAssignedTo</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[rightnow = new GlideDateTime();
+var overdueNITasks = new GlideRecords('x_64935_gql_needit_task');
+overdueNITasks.addQuery('due_date', '<=',rightnow);
+overdueNITasks.addQuery('state', '!=',3);
+overdueNITasks.addquery('assigned_to',current.assignet_to);
+overdueNITasks.query();
+template.printlin("In addition to this overdue task,you have" + (overdueNITask.getRowCount()-1) + "more overdue NeedIt task.");]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-10-01 09:29:19</sys_created_on>
+        <sys_id>d4389c210fa1030027118d8ce1050e87</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CountoverdueNeeditTaslAssignedTo</sys_name>
+        <sys_package display_value="gql" source="x_64935_gql">a4d8ddd54f62a600463efd218110c731</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="gql">a4d8ddd54f62a600463efd218110c731</sys_scope>
+        <sys_update_name>sys_script_email_d4389c210fa1030027118d8ce1050e87</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-10-01 09:29:19</sys_updated_on>
+    </sys_script_email>
+</record_update>
